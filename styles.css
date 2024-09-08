@@ -1,28 +1,40 @@
-/* Base Styles */
+/* Reset some default browser styles */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* General Body Styling */
 body {
-  font-family: 'Chakra Petch', sans-serif; /* Use your chosen font */
-  background-color: #000; /* Black background */
+  font-family: 'Chakra Petch', sans-serif;
+  background-color: #000;
   color: #00FF00; /* Matrix-style green text */
   text-align: center;
-  padding: 20px;
   margin: 0;
-  overflow: hidden; /* Prevent scrolling due to canvas overflow */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
-/* Button Styling */
-button {
-  background-color: #00FF00;
-  color: #000;
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: transform 0.3s ease, background-color 0.3s ease;
+/* Matrix Rain Effect Styling */
+#matrix {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Ensure canvas stays behind all other content */
 }
 
-button:hover {
-  transform: scale(1.1); /* Animation: grow on hover */
-  background-color: #00cc00; /* Slightly darker green */
+/* Main Content Wrapper */
+.main-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: transparent; /* Changed to transparent to remove the dark background */
+  border-radius: 10px;
+  text-align: center;
 }
 
 /* Navigation Bar Styling */
@@ -34,6 +46,7 @@ nav {
   padding: 10px 0;
   width: 100%;
   text-align: center;
+  margin: 0; /* Ensures no margin around the navbar */
 }
 
 nav ul {
@@ -49,21 +62,52 @@ nav ul li {
 }
 
 nav ul li a {
-  color: #00FF00; /* Matrix-style green */
+  color: #00FF00;
   text-decoration: none;
   font-size: 18px;
-  transition: color 0.3s ease;
 }
 
 nav ul li a:hover {
-  color: #ffffff; /* White on hover */
+  color: #ffffff;
   text-decoration: underline;
+}
+
+/* Button Styling */
+button {
+  background-color: #00FF00;
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+button:hover {
+  transform: scale(1.1);
+  background-color: #00cc00; /* Slightly darker green */
+}
+
+/* Section Title Styling */
+h1, h2 {
+  margin: 0;
+  padding: 10px 0;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
 }
 
 /* Product Listings Styling */
 #products {
-  margin-top: 40px;
-  text-align: center;
+  margin-top: 20px;
 }
 
 .product {
@@ -74,58 +118,22 @@ nav ul li a:hover {
   border: 1px solid #00FF00;
   background-color: #111;
   color: #00FF00;
+  border-radius: 10px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative; /* Relative positioning to handle any internal content positioning */
+}
+
+.product:hover {
+  transform: scale(1.05); /* Slightly enlarges the card */
+  box-shadow: 0 0 15px #00FF00; /* Adds a green glow around the card */
+  z-index: 2; /* Ensures the hovered card stays above others */
 }
 
 .product img {
   width: 100%;
   height: auto;
-}
-
-/* Contact Form Styling */
-#contact {
-  text-align: center;
-  padding: 20px;
-  margin-top: 40px;
-}
-
-#contact-form {
-  display: inline-block;
-  text-align: left;
-  max-width: 400px;
-  width: 100%;
-  padding: 20px;
-  background-color: #111;
-  border: 1px solid #00FF00;
-}
-
-#contact-form label {
-  color: #00FF00;
-  display: block;
-  margin-bottom: 5px;
-}
-
-#contact-form input,
-#contact-form textarea {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #00FF00;
-  background-color: #000;
-  color: #00FF00;
-}
-
-#contact-form button {
-  background-color: #00FF00;
-  color: #000;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: transform 0.3s ease;
-}
-
-#contact-form button:hover {
-  transform: scale(1.1);
+  border-radius: 5px;
 }
 
 /* Modal Popup Styling */
@@ -166,43 +174,136 @@ nav ul li a:hover {
   cursor: pointer;
 }
 
-/* Matrix Rain Effect Styling */
-#matrix {
-  position: fixed;
-  top: 0;
-  left: 0;
+/* Contact Form Styling */
+#contact {
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  color: #00FF00;
+}
+
+#contact-form {
+  display: inline-block;
+  text-align: left;
+  max-width: 400px;
   width: 100%;
-  height: 100%;
-  z-index: -1; /* Ensure canvas stays behind all other content */
+  padding: 20px;
+  background-color: #111;
+  border: 1px solid #00FF00;
+  border-radius: 10px;
+}
+
+#contact-form label {
+  color: #00FF00;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold; /* Makes labels bold for better contrast */
+}
+
+#contact-form input,
+#contact-form textarea {
+  width: calc(100% - 20px); /* Adjust width for padding */
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #00FF00;
+  background-color: #000;
+  color: #00FF00;
+  box-sizing: border-box; /* Ensures padding is included in the width */
+  border-radius: 5px; /* Rounded corners for a cleaner look */
+}
+
+#contact-form input[type="text"],
+#contact-form input[type="email"] {
+  display: block;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+#contact-form button {
+  background-color: #00FF00;
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  margin-top: 10px;
+  border-radius: 5px; /* Rounded corners for button */
+}
+
+#contact-form button:hover {
+  transform: scale(1.1);
+  background-color: #00cc00; /* Slightly darker green */
+}
+
+/* Media Query for Smaller Screens */
+@media (max-width: 600px) {
+  nav ul li {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .product {
+    width: 90%; /* Make product boxes full width on small screens */
+    margin: 10px auto; /* Center product boxes */
+  }
+
+  #products {
+    padding: 10px;
+  }
 }
 
 /* Mobile-Friendly Styles */
 @media (max-width: 768px) {
   body {
-      padding: 10px;
-      font-size: 14px;
+    padding: 10px;
+    font-size: 14px;
   }
 
   nav ul {
-      flex-direction: column;
-      align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
   }
 
   nav ul li {
-      margin: 10px 0;
+    margin: 10px 0;
   }
 
   .product {
-      width: 90%;
-      padding: 10px;
-      margin-bottom: 20px;
+    display: inline-block;
+    width: 200px;
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #00FF00;
+    background-color: #111;
+    color: #00FF00;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative; /* Relative positioning to handle any internal content positioning */
+  }
+  
+  .product:hover {
+    transform: scale(1.05); /* Slightly enlarges the card */
+    box-shadow: 0 0 15px #00FF00; /* Adds a green glow around the card */
+    z-index: 2; /* Ensures the hovered card stays above others */
   }
 
   h1, h2, h3 {
-      font-size: 1.5em; /* Adjust headings for smaller screens */
+    font-size: 1.5em; /* Adjust headings for smaller screens */
   }
 }
-/* Smooth Scrolling */
-html {
-  scroll-behavior: smooth;
+/* Center the form container */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  padding: 20px;
+  max-width: 400px; /* Adjust width as needed */
+  border: 2px solid #00ff00; /* Green border color */
+  border-radius: 15px; /* Rounded corners */
+  background-color: #000; /* Background color */
 }
