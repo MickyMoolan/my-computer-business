@@ -202,3 +202,7 @@ nav ul li a:hover {
       font-size: 1.5em; /* Adjust headings for smaller screens */
   }
 }
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
