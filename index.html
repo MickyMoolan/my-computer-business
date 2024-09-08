@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Computer Business</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to CSS file -->
+</head>
+<body>
+   <!-- Navigation Bar -->
+   <nav>
+       <ul>
+           <li><a href="#">Home</a></li>
+           <li><a href="#products">Products</a></li>
+           <li><a href="#about">About Us</a></li>
+           <li><a href="#contact">Contact</a></li>
+       </ul>
+   </nav>
+
+    <h1>Welcome to My Computer Business</h1>
+    <p>Your one-stop shop for all things computers!</p>
+    <button class="buy-button">Buy Now</button> <!-- Updated button with class -->
+
+   <!-- Product Listings Section -->
+   <section id="products">
+       <h2>Our Products</h2>
+       <div class="product">
+           <img src="product1.jpg" alt="Product 1" />
+           <h3>Gaming PC Build</h3>
+           <p>A powerful gaming PC with the latest components.</p>
+           <p>Price: £999</p>
+           <button class="buy-button">Buy Now</button> <!-- Updated button with class -->
+       </div>
+       
+       <div class="product">
+           <img src="product2.jpg" alt="Product 2" />
+           <h3>Budget Office PC</h3>
+           <p>Perfect for everyday office tasks and browsing.</p>
+           <p>Price: £299</p>
+           <button class="buy-button">Buy Now</button> <!-- Updated button with class -->
+       </div>
+   </section>
+
+   <!-- Contact Form Section -->
+   <section id="contact">
+       <h2>Contact Us</h2>
+       <form id="contact-form">
+           <label for="name">Name:</label>
+           <input type="text" id="name" name="name" required><br><br>
+
+           <label for="email">Email:</label>
+           <input type="email" id="email" name="email" required><br><br>
+
+           <label for="message">Message:</label><br>
+           <textarea id="message" name="message" rows="4" required></textarea><br><br>
+
+           <button type="submit">Send Message</button>
+       </form>
+   </section>
+
+   <!-- JavaScript to handle button clicks and form submission -->
+   <script>
+     // JavaScript function to show an alert when the Buy Now button is clicked
+     document.querySelectorAll('.buy-button').forEach(function(button) {
+       button.addEventListener('click', function() {
+         alert('Thank you for your interest! The buying feature will be available soon.');
+       });
+     });
+     
+     // JavaScript for form validation
+     document.getElementById('contact-form').addEventListener('submit', function(event) {
+       event.preventDefault(); // Prevents the form from actually submitting
+       alert('Thank you for contacting us! We will get back to you soon.');
+       // Clear the form fields after submission
+       document.getElementById('name').value = '';
+       document.getElementById('email').value = '';
+       document.getElementById('message').value = '';
+     });
+   </script>
+</body>
+</html>
