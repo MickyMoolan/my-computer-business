@@ -156,3 +156,83 @@ body {
   height: 100%;
   z-index: -1; /* Ensure canvas stays behind all other content */
 }
+
+/* Mobile-Friendly Styles */
+@media (max-width: 768px) {
+  body {
+      padding: 10px;
+      font-size: 14px;
+  }
+
+  nav ul {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0;
+  }
+
+  nav ul li {
+      margin: 10px 0;
+  }
+
+  .product {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+  }
+
+  h1, h2, h3 {
+      font-size: 1.5em; /* Adjust headings for smaller screens */
+  }
+}
+
+/* Button Hover Effect */
+button {
+  background-color: #00FF00;
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.1);
+  background-color: #00cc00; /* Slightly darker green */
+}
+
+/* Nav Link Hover Effect */
+nav ul li a {
+  color: #00FF00; /* Matrix-style green */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #ffffff; /* White on hover */
+  text-decoration: underline;
+}
+
+/* Sticky Navigation Bar */
+nav {
+  background-color: #333;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 10px 0;
+  width: 100%;
+  text-align: center;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
