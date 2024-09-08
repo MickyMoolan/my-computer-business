@@ -1,145 +1,6 @@
+/* Base Styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #000;
-    color: #00FF00; /* Matrix-style green text */
-    text-align: center;
-    padding: 20px;
-}
-
-button {
-    background-color: #00FF00;
-    color: #000;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-button:hover {
-    transform: scale(1.1); /* Animation: grow on hover */
-}
-
-/* Navigation Bar Styling */
-nav {
-    background-color: #333;
-    padding: 10px;
-    text-align: center;
-  }
-  
-  nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  nav ul li {
-    display: inline;
-    margin-right: 20px;
-  }
-  
-  nav ul li a {
-    color: #00FF00; /* Matrix-style green text */
-    text-decoration: none;
-    font-size: 18px;
-  }
-  
-  /* Product Listings Styling */
-  #products {
-    margin-top: 40px;
-    text-align: center;
-  }
-  
-  .product {
-    display: inline-block;
-    width: 200px;
-    margin: 20px;
-    padding: 10px;
-    border: 1px solid #00FF00;
-    background-color: #111;
-    color: #00FF00;
-  }
-  
-  .product img {
-    width: 100%;
-    height: auto;
-  }
-
-  /* Media Query for Smaller Screens */
-@media (max-width: 600px) {
-    nav ul li {
-      display: block;
-      margin-bottom: 10px;
-    }
-    
-    .product {
-      width: 90%; /* Make product boxes full width on small screens */
-      margin: 10px auto; /* Center product boxes */
-    }
-  
-    #products {
-      padding: 10px;
-    }
-  }
-
-/* Contact Form Styling */
-#contact {
-    text-align: center;
-    padding: 20px;
-    margin-top: 40px;
-    color: #00FF00;
-}
-
-#contact-form {
-    display: inline-block;
-    text-align: left;
-    max-width: 400px;
-    width: 100%;
-    padding: 20px;
-    background-color: #111;
-    border: 1px solid #00FF00;
-}
-
-#contact-form label {
-    color: #00FF00;
-    display: block;
-    margin-bottom: 5px;
-}
-
-#contact-form input, #contact-form textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #00FF00;
-    background-color: #000;
-    color: #00FF00;
-}
-
-#contact-form button {
-    background-color: #00FF00;
-    color: #000;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: transform 0.3s ease;
-}
-
-#contact-form button:hover {
-    transform: scale(1.1);
-}
-
-body {
-  font-family: 'Chakra Petch', sans-serif; /* Replace 'Chakra Petch' with your chosen font */
-  background-color: #000;
-  color: #00FF00; /* Matrix-style green text */
-  text-align: center;
-  padding: 20px;
-}
-
-/* Matrix Rain Effect Styling */
-body {
-  font-family: 'Chakra Petch', sans-serif;
+  font-family: 'Chakra Petch', sans-serif; /* Use your chosen font */
   background-color: #000; /* Black background */
   color: #00FF00; /* Matrix-style green text */
   text-align: center;
@@ -148,73 +9,23 @@ body {
   overflow: hidden; /* Prevent scrolling due to canvas overflow */
 }
 
-#matrix {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1; /* Ensure canvas stays behind all other content */
-}
-
-/* Mobile-Friendly Styles */
-@media (max-width: 768px) {
-  body {
-      padding: 10px;
-      font-size: 14px;
-  }
-
-  nav ul {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 0;
-  }
-
-  nav ul li {
-      margin: 10px 0;
-  }
-
-  .product {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 20px;
-  }
-
-  h1, h2, h3 {
-      font-size: 1.5em; /* Adjust headings for smaller screens */
-  }
-}
-
-/* Button Hover Effect */
+/* Button Styling */
 button {
   background-color: #00FF00;
   color: #000;
   border: none;
   padding: 10px 20px;
-  cursor: pointer;
   font-size: 16px;
+  cursor: pointer;
   transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 button:hover {
-  transform: scale(1.1);
+  transform: scale(1.1); /* Animation: grow on hover */
   background-color: #00cc00; /* Slightly darker green */
 }
 
-/* Nav Link Hover Effect */
-nav ul li a {
-  color: #00FF00; /* Matrix-style green */
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-nav ul li a:hover {
-  color: #ffffff; /* White on hover */
-  text-decoration: underline;
-}
-
-/* Sticky Navigation Bar */
+/* Navigation Bar Styling */
 nav {
   background-color: #333;
   position: sticky;
@@ -235,4 +46,159 @@ nav ul {
 
 nav ul li {
   margin: 0 15px;
+}
+
+nav ul li a {
+  color: #00FF00; /* Matrix-style green */
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #ffffff; /* White on hover */
+  text-decoration: underline;
+}
+
+/* Product Listings Styling */
+#products {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.product {
+  display: inline-block;
+  width: 200px;
+  margin: 20px;
+  padding: 10px;
+  border: 1px solid #00FF00;
+  background-color: #111;
+  color: #00FF00;
+}
+
+.product img {
+  width: 100%;
+  height: auto;
+}
+
+/* Contact Form Styling */
+#contact {
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+#contact-form {
+  display: inline-block;
+  text-align: left;
+  max-width: 400px;
+  width: 100%;
+  padding: 20px;
+  background-color: #111;
+  border: 1px solid #00FF00;
+}
+
+#contact-form label {
+  color: #00FF00;
+  display: block;
+  margin-bottom: 5px;
+}
+
+#contact-form input,
+#contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #00FF00;
+  background-color: #000;
+  color: #00FF00;
+}
+
+#contact-form button {
+  background-color: #00FF00;
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: transform 0.3s ease;
+}
+
+#contact-form button:hover {
+  transform: scale(1.1);
+}
+
+/* Modal Popup Styling */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+}
+
+.modal-content {
+  background-color: #333;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #00FF00;
+  width: 80%;
+  max-width: 500px;
+  color: #00FF00;
+  text-align: center;
+}
+
+.close {
+  color: #00FF00;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Matrix Rain Effect Styling */
+#matrix {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Ensure canvas stays behind all other content */
+}
+
+/* Mobile-Friendly Styles */
+@media (max-width: 768px) {
+  body {
+      padding: 10px;
+      font-size: 14px;
+  }
+
+  nav ul {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  nav ul li {
+      margin: 10px 0;
+  }
+
+  .product {
+      width: 90%;
+      padding: 10px;
+      margin-bottom: 20px;
+  }
+
+  h1, h2, h3 {
+      font-size: 1.5em; /* Adjust headings for smaller screens */
+  }
 }

@@ -62,7 +62,17 @@
         </form>
     </section>
 
-    <!-- JavaScript to handle button clicks, form submission, and Matrix Rain effect -->
+    <!-- Modal Popup for Product Details -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3 id="modalTitle">Product Title</h3>
+            <p id="modalDescription">Product details will appear here...</p>
+            <p id="modalPrice">Price: </p>
+        </div>
+    </div>
+
+    <!-- JavaScript to handle all interactivity -->
     <script>
         // JavaScript function to show an alert when the Buy Now button is clicked
         document.querySelectorAll('.buy-button').forEach(function(button) {
@@ -120,6 +130,44 @@
         }
 
         setInterval(drawMatrix, 50);
+
+        // JavaScript for Modal Popup
+        const modal = document.getElementById("productModal");
+        const modalTitle = document.getElementById("modalTitle");
+        const modalDescription = document.getElementById("modalDescription");
+        const modalPrice = document.getElementById("modalPrice");
+        const closeModal = document.getElementsByClassName("close")[0];
+
+        // Function to open the modal with product details
+        function openModal(title, description, price) {
+            modalTitle.textContent = title;
+            modalDescription.textContent = description;
+            modalPrice.textContent = `Price: ${price}`;
+            modal.style.display = "block";
+        }
+
+        // Close the modal when the 'X' is clicked
+        closeModal.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // Close the modal when clicking anywhere outside of it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Add click events to the product buttons to open the modal
+        document.querySelectorAll('.product .buy-button').forEach(function(button, index) {
+            button.addEventListener('click', function() {
+                if (index === 0) {
+                    openModal("Gaming PC Build", "A powerful gaming PC with the latest components.", "£999");
+                } else if (index === 1) {
+                    openModal("Budget Office PC", "Perfect for everyday office tasks and browsing.", "£299");
+                }
+            });
+        });
     </script>
 </body>
 </html>
