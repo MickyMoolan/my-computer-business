@@ -13,7 +13,6 @@ body {
   background-color: #000;
   color: #00FF00; /* Matrix-style green text */
   text-align: center;
-  margin: 0;
   overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
@@ -32,8 +31,7 @@ body {
   max-width: 1000px;
   margin: 0 auto;
   padding: 20px;
-  background-color: transparent; /* Changed to transparent to remove the dark background */
-  border-radius: 10px;
+  background-color: transparent; /* Transparent to remove dark background */
   text-align: center;
 }
 
@@ -43,10 +41,25 @@ nav {
   position: sticky;
   top: 0;
   z-index: 10;
-  padding: 10px 0;
   width: 100%;
-  text-align: center;
-  margin: 0; /* Ensures no margin around the navbar */
+  padding: 2px 0;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center the content horizontally */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+#logo {
+  height: 60px;
+  width: auto; /* Keep aspect ratio */
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  margin-right: 15px; /* Space between logo and 'Home' link */
 }
 
 nav ul {
@@ -54,7 +67,7 @@ nav ul {
   margin: 0;
   padding: 0;
   display: flex;
-  justify-content: center;
+  align-items: center;
 }
 
 nav ul li {
@@ -65,15 +78,28 @@ nav ul li a {
   color: #00FF00;
   text-decoration: none;
   font-size: 18px;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
 nav ul li a:hover {
   color: #ffffff;
+  transform: scale(1.1); /* Slightly enlarges the text on hover */
   text-decoration: underline;
 }
 
+/* Center Title Styling */
+.main-title {
+  display: flex; /* Use Flexbox to center the content */
+  flex-direction: column; /* Stack elements vertically */
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+  text-align: center;
+  margin: 0 auto; /* Auto margin for centering */
+  height: 150px; /* Adjust the height as needed */
+}
+
 /* Button Styling */
-button {
+button, .buy-button {
   background-color: #00FF00;
   color: #000;
   border: none;
@@ -82,22 +108,34 @@ button {
   cursor: pointer;
   transition: transform 0.3s ease, background-color 0.3s ease;
   margin-top: 10px;
+  border-radius: 5px; /* Rounded corners for button */
 }
 
-button:hover {
+button:hover, .buy-button:hover {
   transform: scale(1.1);
   background-color: #00cc00; /* Slightly darker green */
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    background-color: #00FF00;
+  }
+  50% {
+    transform: scale(1.05);
+    background-color: #00cc00;
+  }
 }
 
 /* Section Title Styling */
 h1, h2 {
   margin: 0;
   padding: 10px 0;
+  text-align: center;
 }
 
 h1 {
   font-size: 2.5em;
-  margin-bottom: 10px;
 }
 
 h2 {
@@ -212,30 +250,6 @@ h2 {
   border-radius: 5px; /* Rounded corners for a cleaner look */
 }
 
-#contact-form input[type="text"],
-#contact-form input[type="email"] {
-  display: block;
-  width: 100%;
-  margin-bottom: 15px;
-}
-
-#contact-form button {
-  background-color: #00FF00;
-  color: #000;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: transform 0.3s ease, background-color 0.3s ease;
-  margin-top: 10px;
-  border-radius: 5px; /* Rounded corners for button */
-}
-
-#contact-form button:hover {
-  transform: scale(1.1);
-  background-color: #00cc00; /* Slightly darker green */
-}
-
 /* Media Query for Smaller Screens */
 @media (max-width: 600px) {
   nav ul li {
@@ -272,29 +286,14 @@ h2 {
   }
 
   .product {
-    display: inline-block;
-    width: 200px;
-    margin: 20px;
-    padding: 10px;
-    border: 1px solid #00FF00;
-    background-color: #111;
-    color: #00FF00;
-    border-radius: 10px;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative; /* Relative positioning to handle any internal content positioning */
-  }
-  
-  .product:hover {
-    transform: scale(1.05); /* Slightly enlarges the card */
-    box-shadow: 0 0 15px #00FF00; /* Adds a green glow around the card */
-    z-index: 2; /* Ensures the hovered card stays above others */
+    width: 100%;
   }
 
   h1, h2, h3 {
     font-size: 1.5em; /* Adjust headings for smaller screens */
   }
 }
+
 /* Center the form container */
 form {
   display: flex;
