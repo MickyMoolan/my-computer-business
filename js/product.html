@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Product Details Section -->
+    <div class="product-detail-page">
+        <h1 id="productTitle"></h1>
+        <img id="productImage" src="" alt="Product Image">
+        <p id="productDescription"></p>
+        <p id="productPrice"></p>
+        <button id="addToCartButton">Add to Cart</button>
+    </div>
+
+    <!-- JavaScript to Handle URL Parameters -->
+    <script>
+        // Fetch product details from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const title = urlParams.get('title');
+        const image = urlParams.get('image');
+        const description = urlParams.get('description');
+        const price = urlParams.get('price');
+
+        // Populate product details on the page
+        document.getElementById('productTitle').innerText = title;
+        document.getElementById('productImage').src = image;
+        document.getElementById('productImage').alt = title;
+        document.getElementById('productDescription').innerText = description;
+        document.getElementById('productPrice').innerText = `Price: £${price}`;
+    </script>
+</body>
+</html>

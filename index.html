@@ -3,177 +3,244 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Computer Business</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to CSS file -->
-    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <title>Galactic Tech Store - Unlock the Power of Custom PCs</title>
+    <!-- Link to CSS file for styling -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts for space-themed typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/favicon.png" type="image/x-icon">
 </head>
 <body>
-    <!-- Matrix Rain Effect -->
-    <canvas id="matrix"></canvas>
+    <!-- Sound for Hover -->
+    <audio id="hoverSound" src="sounds/hover-sound.mp3" preload="auto"></audio>
 
-    <!-- Navigation Bar -->
-    <nav>
-        <div class="nav-container">
-            <a href="#"><img src="images/matrixpcs-logo.png" alt="MatrixPCS Logo" id="logo"></a>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#products">Products</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+    <!-- Ambient Background Music -->
+    <audio id="ambientSound" src="sounds/equilibrium.mp3" loop preload="auto"></audio>
+
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
 
     <!-- Main Content Wrapper -->
-    <div class="main-content">
-        <!-- Title Section -->
-        <div class="main-title">
-            <h1>Welcome to My Computer Business</h1>
-            <p>Your one-stop shop for all things computers!</p>
+    <div id="main-content">
+
+        <!-- Overlay Loader -->
+        <div id="loader" class="loader">
+            <div class="spinner"></div>
         </div>
 
-        <!-- Product Listings Section -->
-        <section id="products">
-            <h2>Our Products</h2>
-            <div class="product">
-                <!-- Use the budget office PC image for the first product -->
-                <img src="images/product2.jpg" alt="Gaming PC Build">
-                <h3>Gaming PC Build</h3>
-                <p>A powerful gaming PC with the latest components.</p>
-                <p>Price: £999</p>
-                <button class="buy-button">Buy Now</button>
+        <!-- Navigation Bar -->
+        <nav class="navbar" aria-label="Main Navigation">
+            <div class="nav-container">
+                <a href="#" class="logo-link"><img src="images/space-logo.png" alt="Galactic Tech Store Logo" id="logo"></a>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#products" class="nav-link">Products</a></li>
+                    <li><a href="#about" class="nav-link">About Us</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+                <!-- Cart button in the header -->
+                <div class="cart-header">
+                    <button class="cart-button" onclick="toggleCart()" aria-label="View Cart">
+                        <img src="images/cart-icon.png" alt="Cart Icon" class="cart-icon">
+                        <span class="cart-count" id="cartCount">0</span>
+                    </button>
+                </div>
             </div>
-            
-            <div class="product">
-                <!-- Use the gaming PC build image for the second product -->
-                <img src="images/product1.jpg" alt="Budget Office PC">
-                <h3>Budget Office PC</h3>
-                <p>Perfect for everyday office tasks and browsing.</p>
-                <p>Price: £299</p>
-                <button class="buy-button">Buy Now</button>
+        </nav>
+
+        <!-- Full-Width Hero Section -->
+        <header id="home" class="hero">
+            <div class="hero-content">
+                <!-- Updated Text -->
+                <h1>Unlock the Power of Custom PCs</h1>
+                <p>Discover the best PC builds for your galactic adventures.</p>
+                <a href="#products" class="cta-button">Shop Now</a>
+            </div>
+            <div class="hero-image">
+                <img src="images/hero-image.png" alt="A futuristic PC setup in space" loading="lazy" />
+            </div>
+        </header>
+
+        <!-- Featured Products Section -->
+        <section id="products" class="products-section">
+            <h2>Our Featured Products</h2>
+            <div class="product-grid">
+                <!-- Product 1 -->
+                <article class="product-card" onclick="goToProductPage('Gaming PC Build', 'images/product1.jpg', 'A powerful gaming PC with the latest components.', 999)">
+                    <div class="product-image">
+                        <img src="images/product1.jpg" alt="Gaming PC Build" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3>Gaming PC Build</h3>
+                        <p>A powerful gaming PC with the latest components.</p>
+                        <span class="price">£999</span>
+                    </div>
+                </article>
+
+                <!-- Product 2 -->
+                <article class="product-card" onclick="goToProductPage('Budget Office PC', 'images/product2.jpg', 'Perfect for everyday office tasks and browsing.', 299)">
+                    <div class="product-image">
+                        <img src="images/product2.jpg" alt="Budget Office PC" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3>Budget Office PC</h3>
+                        <p>Perfect for everyday office tasks and browsing.</p>
+                        <span class="price">£299</span>
+                    </div>
+                </article>
             </div>
         </section>
 
-        <!-- Contact Form Section -->
-        <section id="contact">
+        <!-- About Us Section -->
+        <section id="about" class="about-section">
+            <h2>About Us</h2>
+            <p>At Galactic Tech Store, we are dedicated to providing high-quality custom PC builds designed for gamers, creators, and professionals who seek the best in technology. Our passion for tech innovation drives us to deliver the latest and greatest products, tailor-made to suit your needs.</p>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
             <h2>Contact Us</h2>
-            <form id="contact-form">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required autocomplete="name"><br><br>
-
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required autocomplete="email"><br><br>
-
-                <label for="message">Message:</label><br>
-                <textarea id="message" name="message" rows="4" required></textarea><br><br>
-
-                <button type="submit">Send Message</button>
+            <form id="contact-form" aria-labelledby="contact" onsubmit="return handleFormSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required placeholder="Your Name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required placeholder="Your Email">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="4" required placeholder="Your Message"></textarea>
+                </div>
+                <button type="submit" class="submit-button">Send Message</button>
             </form>
         </section>
-    </div>
 
-    <!-- Modal Popup for Product Details -->
-    <div id="productModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h3 id="modalTitle">Product Title</h3>
-            <p id="modalDescription">Product details will appear here...</p>
-            <p id="modalPrice">Price: </p>
+        <!-- Cart Modal -->
+        <div id="cartModal" class="cart-modal" aria-hidden="true">
+            <div class="cart-modal-content">
+                <button class="close" aria-label="Close Cart" onclick="toggleCart()">&times;</button>
+                <h3>Your Cart</h3>
+                <ul id="cartItems"></ul>
+                <p>Total: <span id="cartTotal">£0</span></p>
+                <button class="checkout-button">Checkout</button>
+            </div>
         </div>
     </div>
 
-    <!-- JavaScript for the Website -->
+    <!-- JavaScript for Particles and Interactive Features -->
+    <script src="js/particles.min.js"></script>
     <script>
-        // JavaScript for Matrix Rain Effect
-        const canvas = document.getElementById('matrix');
-        const ctx = canvas.getContext('2d');
+        // Initialize particles.js
+        particlesJS.load('particles-js', 'js/particlesjs-config.json', function() {
+            console.log('Particles.js loaded');
+        });
 
-        // Making the canvas full screen
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        // Initialize Audio Context to unlock audio on page load
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        const audioContext = new AudioContext();
 
-        // Characters for the Matrix effect
-        const matrixChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%';
-        const characters = matrixChars.split('');
+        // Get the hover sound and ambient music elements and set their volumes
+        const hoverSound = document.getElementById('hoverSound');
+        hoverSound.volume = 0.1; // Set volume to 10%
+        
+        const ambientSound = document.getElementById('ambientSound');
+        ambientSound.volume = 0.1; // Set volume to 10%
 
-        // Setting up font size and columns
-        const fontSize = 14;
-        const columns = canvas.width / fontSize;
-
-        // Array for storing the y-coordinate of each column
-        const drops = Array.from({ length: columns }).fill(1);
-
-        // Function to draw the Matrix effect
-        function drawMatrix() {
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = '#0F0'; // Bright green text
-            ctx.font = `${fontSize}px monospace`;
-
-            for (let i = 0; i < drops.length; i++) {
-                const text = characters[Math.floor(Math.random() * characters.length)];
-                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-                // Reset drop back to top randomly
-                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                    drops[i] = 0;
-                }
-                drops[i]++;
-            }
+        // Function to play hover sound
+        function playHoverSound() {
+            hoverSound.currentTime = 0; // Reset the sound to start
+            hoverSound.play();
         }
 
-        // Draw matrix rain with updated color
-        setInterval(drawMatrix, 50);
-
-        // JavaScript for Modal Popup
-        const modal = document.getElementById("productModal");
-        const modalTitle = document.getElementById("modalTitle");
-        const modalDescription = document.getElementById("modalDescription");
-        const modalPrice = document.getElementById("modalPrice");
-        const closeModal = document.getElementsByClassName("close")[0];
-
-        // Function to open the modal with product details
-        function openModal(title, description, price) {
-            modalTitle.textContent = title;
-            modalDescription.textContent = description;
-            modalPrice.textContent = `Price: ${price}`;
-            modal.style.display = "block";
+        // Function to start ambient music
+        function startAmbientSound() {
+            ambientSound.play();
         }
 
-        // Close the modal when the 'X' is clicked
-        closeModal.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        // Close the modal when clicking anywhere outside of it
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-
-        // Add click events to the product buttons to open the modal
-        document.querySelectorAll('.product .buy-button').forEach(function(button, index) {
-            button.addEventListener('click', function() {
-                if (index === 0) {
-                    openModal("Gaming PC Build", "A powerful gaming PC with the latest components.", "£999");
-                } else if (index === 1) {
-                    openModal("Budget Office PC", "Perfect for everyday office tasks and browsing.", "£299");
-                }
+        // Add event listeners to play sound on hover and start music
+        document.querySelectorAll('.nav-link, .buy-button, .cta-button, .cart-button').forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                playHoverSound();
+                startAmbientSound();
             });
         });
-        
+
+        // Loader Animation
+        window.addEventListener("load", function() {
+            document.getElementById("loader").style.display = "none";
+
+            // Resume audio context on user interaction
+            audioContext.resume().then(() => {
+                hoverSound.play().then(() => hoverSound.pause());
+            });
+
+            // Listen for any user interaction to start ambient music
+            document.body.addEventListener('click', startAmbientSound, { once: true });
+            document.body.addEventListener('mousemove', startAmbientSound, { once: true });
+        });
+
+        // Function to redirect to product detail page
+        function goToProductPage(title, image, description, price) {
+            const productDetails = {
+                title: title,
+                image: image,
+                description: description,
+                price: price
+            };
+            const queryString = new URLSearchParams(productDetails).toString();
+            window.location.href = `product.html?${queryString}`;
+        }
+
+        // Cart Management
+        let cart = [];
+
+        function addToCart(productName, price) {
+            cart.push({ name: productName, price: price });
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartCount = document.getElementById("cartCount");
+            const cartItems = document.getElementById("cartItems");
+            const cartTotal = document.getElementById("cartTotal");
+            cartCount.textContent = cart.length;
+            cartItems.innerHTML = '';
+            let total = 0;
+            cart.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = `${item.name} - £${item.price}`;
+                cartItems.appendChild(li);
+                total += item.price;
+            });
+            cartTotal.textContent = `£${total}`;
+        }
+
+        function toggleCart() {
+            const cartModal = document.getElementById("cartModal");
+            const isHidden = cartModal.getAttribute('aria-hidden') === 'true';
+            cartModal.setAttribute('aria-hidden', isHidden ? 'false' : 'true');
+            cartModal.style.display = isHidden ? 'block' : 'none';
+        }
+
+        // Contact Form Submission
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            alert('Thank you for reaching out! We will get back to you soon.');
+            return false; // Prevent actual form submission
+        }
     </script>
-    <script>
-      // JavaScript for Smooth Scrolling
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-          anchor.addEventListener('click', function (e) {
-              e.preventDefault();
-              document.querySelector(this.getAttribute('href')).scrollIntoView({
-                  behavior: 'smooth'
-              });
-          });
+
+<script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
       });
-    </script>      
+    });
+</script>
 </body>
 </html>
